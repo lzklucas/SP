@@ -33,6 +33,15 @@ order by
 
 /*
 select 
+	Staff_Name, isnull(Pay,0) + isnull(Allowance,0) as 'salary', 2.25 * (isnull(Pay,0) + isnull(Allowance,0)) as 'bonus'
+from 
+	staff_relation
+order by 
+	'bonus'
+*/
+
+/*
+select 
 	Dept_Name, Max_Staff_Strength, No_Of_Staff,
 	Max_Staff_Strength - No_Of_Staff as 'Number understaffed'
 from
@@ -75,6 +84,7 @@ order by
 -- select getdate()
 
 --3)
+/*
 select 
 	staff_name,
 	year(getdate()) - join_yr as 'Number of years in service'
@@ -82,3 +92,29 @@ from
 	staff_relation
 order by
 	'Number of years in service' desc	
+*/
+
+/*
+select 
+	Crse_Cd, Crse_Name, len(Crse_Name) as 'length of name'
+from 
+	course_relation
+where
+	len(Crse_Name) > 31
+order by
+	'length of name' asc
+*/
+
+select * from course_relation
+
+
+select 
+	UPPER(Crse_Cd), UPPER(Crse_Name)
+from 
+	course_relation
+order by
+	Crse_Cd desc
+
+
+
+

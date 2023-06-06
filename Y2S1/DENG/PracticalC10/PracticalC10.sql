@@ -1,10 +1,10 @@
 --Pract C10
 use [Royal_Poly_DB];
-
+/*
 select * from staff_relation
 select * from country_relation
 select * from department_relation
-
+*/
 
 /*Section A: Joining two tables/relations 
 1. Write the SQL statement to list the admission number, the name of the student who scored 
@@ -12,6 +12,16 @@ above average for DBMS module. Display also their DBMS marks and grade, sorted i
 descending order of mark.
 */
 
+/*
+select p.adm_no, s.stud_name, p.mark, p.grade
+from stud_mod_performance_relation p, student_relation s
+where p.adm_no =s.adm_no
+and p.mod_registered ='DBMS'
+and mark > ( select avg( mark )
+from stud_mod_performance_relation
+where mod_registered ='DBMS' )
+order by 3 desc
+*/
 
 /*
 2. Write the SQL statement to list citizenship and name of staff that come from English 
@@ -29,7 +39,7 @@ where
 	language = 'Chinese'
 */
 
-/*
+
 Select 
 	citizenship, 
 	staff_name
@@ -44,7 +54,12 @@ where
 		where
 			language = 'Chinese'
 	)
-*/
+
+Select
+			*
+		from 
+			country_relation
+
 
 /*
 3. Write the SQL statement to list all information of departments with a female head of 
@@ -52,7 +67,7 @@ department.
 */
 --what tables are needed
 --Select all female staff
-
+/*
 Select 
 	*
 from
@@ -66,7 +81,7 @@ where
 		where
 			Gender = 'F'
 	)
-
+*/
 /*
 4. Write the SQL statement to list all information of those modules with pre-requisites. 
 Section B: Optional

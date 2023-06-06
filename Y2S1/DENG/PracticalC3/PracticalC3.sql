@@ -117,3 +117,8 @@ from
 order by 
 	 4 desc
 */
+
+
+--select * from department_relation
+
+

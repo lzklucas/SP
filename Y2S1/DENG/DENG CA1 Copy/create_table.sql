@@ -3,7 +3,7 @@ use [GroceryStore2222770];
 -- Create a new Database
 -- create database [GroceryStore2222770]
 
--- CREATE AND POPULATE TABLES
+-- Create and Populate Tables
 
 -- create store table
 create table store(

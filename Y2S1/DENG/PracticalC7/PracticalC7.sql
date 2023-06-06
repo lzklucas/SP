@@ -111,11 +111,48 @@ sum( isnull(pay,0) + isnull(allowance,0) ). List the No of Staff for each depart
 well.
 */
 
+/*
+select
+	dept_cd, sum(isnull(pay,0) + isnull(allowance,0)) as 'Total Manpower Cost', COUNT(Staff_No)
+from
+	staff_relation
+where 
+	Dept_Cd not in ('PO', 'DPO')
+group by
+	Dept_Cd
+having 
+	count(staff_no) > 2
+*/
+
+select*from staff_relation
+
+
+select
+	substring(Staff_no,1,1), count(staff_no), avg(datediff(year, Date_Of_Birth, getdate()))
+from
+	staff_relation
+group by
+	substring(Staff_no,1,1)
+order by
+	count(Staff_No) desc
+
+
 
 /*
 (b) Exclude those departments with one or two staff.
 */
-
+/*
+select
+	dept_cd, sum(isnull(pay,0) + isnull(allowance,0)) as 'Total Manpower Cost', COUNT(Staff_No)
+from
+	staff_relation
+where 
+	Dept_Cd not in ('PO', 'DPO')
+group by
+	Dept_Cd
+having 
+	count(staff_no) > 2 and (sum(isnull(pay,0) + isnull(allowance,0))) > 20000
+*/
 /*
 (c) Exclude those departments with one or two staff and total manpower cost less than
 $20,000.
@@ -129,7 +166,7 @@ of staff ordered by descending order of number of staff. .
 select 
 	substring(staff_no,1,1) 'First letter of start_no', -- Group column
 	count(staff_no), -- Aggregate column
-	avg(datediff(year, date_of_birth, getdate())) 'Mean Age'
+	avg(datediff(year, getdate(), Date_Of_Birth)) 'Mean Age'
 from
 	staff_relation
 group by 

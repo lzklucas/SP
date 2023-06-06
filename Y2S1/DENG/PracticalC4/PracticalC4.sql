@@ -107,6 +107,7 @@ order by
 	pay asc
 */
 
+/*
 select 
 	staff_no, staff_name, gender, date_of_birth, pay, grade, join_yr
 from
@@ -116,4 +117,18 @@ where
 	grade not in ('SSD', 'SSE') and 
 	(year(date_of_birth) < 1963 or pay > 6000 or
 	join_yr between 1997 and 2000)
- 
+*/
+
+select * from staff_relation
+
+
+select 
+	Gender, pay, Staff_Name 
+from
+	staff_relation
+where
+	(Gender = 'F' and Grade not in ('SSD', 'SSE') and year (Date_Of_Birth) < 1963) or
+	(Gender = 'F' and Grade not in ('SSD', 'SSE') and Join_Yr between 1997 and 2000) or 
+	(Gender = 'F' and Grade not in ('SSD', 'SSE') and pay > 6000)
+
+  

@@ -3,7 +3,15 @@ use [GroceryStore2222770]
 -- (b)(i)
 
 select 
-	c.CustName 'custName', e.StoreRef_ID 'Store_ID', s.Store_Address 'Store Address', e1.EmpName 'Manager of the Store', Date_of_Purchase 'Transaction Date', i.Brand 'Brand', i.Description 'Description', p.Quantity 'Quantity Purchased', e.EmpName 'Served By'
+	c.CustName 'custName',
+	e.StoreRef_ID 'Store_ID',
+	s.Store_Address 'Store Address',
+	e1.EmpName 'Manager of the Store',
+	Date_of_Purchase 'Transaction Date',
+	i.Brand 'Brand',
+	i.Description 'Description',
+	p.Quantity 'Quantity Purchased',
+	e.EmpName 'Served By'
 from 
 	purchase_item as p
 inner join
@@ -21,7 +29,11 @@ inner join
 -- (b)(ii)
 
 select 
-	s.Manager_ID 'Store Manage ID', e.EmpName 'Name of Manager', s.Store_ID 'Store Managed', iv.Item_ID 'Item', iv.Quantity 'Quantity on inventory'
+	s.Manager_ID 'Store Manage ID',
+	e.EmpName 'Name of Manager',
+	s.Store_ID 'Store Managed',
+	iv.Item_ID 'Item',
+	iv.Quantity 'Quantity on inventory'
 from
 	store as s
 inner join 
@@ -31,8 +43,8 @@ inner join
 order by
 	'Store Managed' asc
 
+
 --(b)(iii)
--- By number of items (count of unique items)
 
 select
     c.CustName,
@@ -63,10 +75,14 @@ group by
 having 
     count(distinct iv.Store_ID) >= 2;
 
+
 --(b)(v) 
 
 select 
-	e.Emp_ID 'Employee ID', e.EmpName 'Employee Name', e1.Emp_ID 'Manager ID', e1.EmpName 'Manager Name'
+	e.Emp_ID 'Employee ID',
+	e.EmpName 'Employee Name',
+	e1.Emp_ID 'Manager ID',
+	e1.EmpName 'Manager Name'
 from 
 	employee as e
 inner join
@@ -76,7 +92,10 @@ inner join
 --(b)(vi)
 
 select 
-	e.Emp_ID, e.EmpName, e1.Emp_ID, e1.EmpName
+	e.Emp_ID,
+	e.EmpName,
+	e1.Emp_ID,
+	e1.EmpName
 from 
 	employee e --Manager
 inner join 
